@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Teste Easynvest</string>
+    <string name="simulation_total_hint">Quanto você gostaria de aplicar? *</string>
+    <string name="simulation_total_value_hint">R$</string>
+    <string name="simulation_duedate_hint">Qual a data de vencimento do investimento? *</string>
+    <string name="simulation_duedate_value_hint">dia/mês/ano</string>
+    <string name="simulation_percent_hint">Qual o percentual do CDI do investimento? *</string>
+    <string name="simulation_percent_value_hint">100%</string>
+    <string name="simulation_button">Simular</string>
 </resources>
