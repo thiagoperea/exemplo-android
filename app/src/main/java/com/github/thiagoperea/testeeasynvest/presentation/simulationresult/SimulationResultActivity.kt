@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.github.thiagoperea.testeeasynvest.R
 import com.github.thiagoperea.testeeasynvest.data.model.SimulationResult
+import com.github.thiagoperea.testeeasynvest.extensions.formatDate
+import com.github.thiagoperea.testeeasynvest.extensions.formatMonetary
+import com.github.thiagoperea.testeeasynvest.extensions.formatPercent
 import kotlinx.android.synthetic.main.activity_simulation_result.*
-import java.text.DecimalFormat
-import java.text.NumberFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SimulationResultActivity : AppCompatActivity() {
 
@@ -34,8 +32,7 @@ class SimulationResultActivity : AppCompatActivity() {
 
         val subtitleValue = result.grossAmountProfit.formatMonetary()
         val subtitle = getString(R.string.result_subtitle, subtitleValue)
-        resultSubtitle.text = paintText(subtitle, subtitleValue, R.color.colorAccent)
-
+        resultSubtitle.text = paintText(subtitle, subtitleValue)
 
         resultAppliedValue.text = result.investmentParameter.investedAmount.formatMonetary()
         resultGrossValue.text = result.grossAmount.formatMonetary()
@@ -58,44 +55,17 @@ class SimulationResultActivity : AppCompatActivity() {
         resultPeriodGrossRate.text = result.rateProfit.formatPercent()
     }
 
-    private fun paintText(
-        text: String,
-        subsString: String,
-        @ColorRes color: Int
-    ): SpannableString {
+    private fun paintText(text: String, subsString: String): SpannableString {
         val spannable = SpannableString(text)
         val startIdx = text.indexOf(subsString)
         val endIdx = startIdx + subsString.length
 
         spannable.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(this, color)),
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.colorAccent)),
             startIdx,
             endIdx,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         return spannable
     }
-}
-
-private fun Double.formatMonetary(): String {
-    val numberFormat = (NumberFormat.getCurrencyInstance() as DecimalFormat).apply {
-        val locale = Locale("pt", "BR")
-        val symbol = Currency.getInstance(locale).symbol
-        isGroupingUsed = true
-        positivePrefix = "$symbol "
-        minimumFractionDigits = 2
-        maximumFractionDigits = 2
-    }
-    return numberFormat.format(this)
-}
-
-private fun Double.formatPercent() = String.format("%.2f", this).plus('%')
-
-private fun String.formatDate(inputFormat: String, outputFormat: String): String {
-    val inDF = SimpleDateFormat(inputFormat, Locale.getDefault())
-    inDF.isLenient = false
-    val inputDate = inDF.parse(this)
-
-    val outDF = SimpleDateFormat(outputFormat, Locale.getDefault())
-    return outDF.format(inputDate)
 }
