@@ -1,15 +1,13 @@
 package com.github.thiagoperea.testeeasynvest.presentation.startsimulation
 
-import android.util.Log
 import androidx.annotation.IdRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.thiagoperea.testeeasynvest.R
 import com.github.thiagoperea.testeeasynvest.data.model.SimulationResult
+import com.github.thiagoperea.testeeasynvest.extensions.formatDate
 import com.github.thiagoperea.testeeasynvest.usecase.SimulationUsecase
 import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SimulationStartViewModel(val simulationUsecase: SimulationUsecase) : ViewModel() {
     var totalValueRaw = ""
@@ -64,7 +62,6 @@ class SimulationStartViewModel(val simulationUsecase: SimulationUsecase) : ViewM
                 onError = { error ->
                     showLoading.postValue(false)
                     simulationError.postValue(error.localizedMessage)
-                    Log.e("TESTE_EASYNVEST", "ERRO: ${error.message}")
                 }
             )
         }
@@ -99,12 +96,7 @@ class SimulationStartViewModel(val simulationUsecase: SimulationUsecase) : ViewM
         }
 
         try {
-            val inputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            inputFormat.isLenient = false
-            val inputDate = inputFormat.parse(dateRaw)
-
-            val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            return outputFormat.format(inputDate)
+            return dateRaw.formatDate("dd/MM/yyyy", "yyyy-MM-dd")
         } catch (error: ParseException) {
             dateValidationError.postValue(R.string.date_validation_error)
             return null
