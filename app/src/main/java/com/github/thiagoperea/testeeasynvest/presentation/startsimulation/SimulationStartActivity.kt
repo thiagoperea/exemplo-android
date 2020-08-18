@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
-import androidx.lifecycle.Observer
 import com.github.thiagoperea.testeeasynvest.R
 import com.github.thiagoperea.testeeasynvest.presentation.textwatcher.DateTextWatcher
 import com.github.thiagoperea.testeeasynvest.presentation.textwatcher.PercentTextWatcher
@@ -27,10 +26,10 @@ class SimulationStartActivity : AppCompatActivity() {
     private fun setupListeners() {
         simulationButton.setOnClickListener { viewModel.startSimulation() }
 
-        viewModel.simulationButtonEnabled.observe(this, Observer {
+        viewModel.simulationButtonEnabled.observe(this, {
             simulationButton.isEnabled = it
         })
-        viewModel.showLoading.observe(this, Observer {
+        viewModel.showLoading.observe(this, {
             if (it) {
                 showLoading()
             } else {
@@ -38,13 +37,13 @@ class SimulationStartActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.valueValidationError.observe(this, Observer {
+        viewModel.valueValidationError.observe(this, {
             simulationTotalValue.error = getString(it)
         })
-        viewModel.dateValidationError.observe(this, Observer {
+        viewModel.dateValidationError.observe(this, {
             simulationDueDateValue.error = getString(it)
         })
-        viewModel.percentValidationError.observe(this, Observer {
+        viewModel.percentValidationError.observe(this, {
             simulationPercentValue.error = getString(it)
         })
     }
