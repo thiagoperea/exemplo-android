@@ -3,6 +3,7 @@ package com.github.thiagoperea.testeeasynvest
 import com.github.thiagoperea.testeeasynvest.data.ApiService
 import com.github.thiagoperea.testeeasynvest.data.model.SimulationResult
 import com.github.thiagoperea.testeeasynvest.data.model.SimulationResultParameters
+import kotlinx.coroutines.delay
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -13,13 +14,17 @@ val networkModule = module {
 
 class MockApi : ApiService {
 
-    override fun doSimulation(
+    override suspend fun doSimulation(
         totalValue: Double,
         index: String,
         rate: Int,
         isTaxFree: Boolean,
         maturityDate: String
     ): SimulationResult {
+
+        // fake loading
+        val loadingTime = (500..2000).random().toLong()
+        delay(loadingTime)
 
         // Error case
         if (rate < 100) {

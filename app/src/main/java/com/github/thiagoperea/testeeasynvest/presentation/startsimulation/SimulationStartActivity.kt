@@ -2,6 +2,7 @@ package com.github.thiagoperea.testeeasynvest.presentation.startsimulation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.github.thiagoperea.testeeasynvest.R
@@ -20,15 +21,18 @@ class SimulationStartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_simulation_start)
 
         setupTextWatchers()
-        setupListeners()
+        setupControlListeners()
+        setupErrorListeners()
+        setupResponseListeners()
     }
 
-    private fun setupListeners() {
+    private fun setupControlListeners() {
         simulationButton.setOnClickListener { viewModel.startSimulation() }
 
         viewModel.simulationButtonEnabled.observe(this, {
             simulationButton.isEnabled = it
         })
+
         viewModel.showLoading.observe(this, {
             if (it) {
                 showLoading()
@@ -36,7 +40,18 @@ class SimulationStartActivity : AppCompatActivity() {
                 hideLoading()
             }
         })
+    }
 
+    private fun setupResponseListeners() {
+        viewModel.simulationResult.observe(this, {
+            Toast.makeText(this, "Abrir tela!! RESULT: $it", Toast.LENGTH_SHORT).show()
+        })
+        viewModel.simulationError.observe(this, {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        })
+    }
+
+    private fun setupErrorListeners() {
         viewModel.valueValidationError.observe(this, {
             simulationTotalValue.error = getString(it)
         })

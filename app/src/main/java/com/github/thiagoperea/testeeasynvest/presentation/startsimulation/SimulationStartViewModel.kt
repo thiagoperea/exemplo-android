@@ -1,9 +1,11 @@
 package com.github.thiagoperea.testeeasynvest.presentation.startsimulation
 
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.thiagoperea.testeeasynvest.R
+import com.github.thiagoperea.testeeasynvest.data.model.SimulationResult
 import com.github.thiagoperea.testeeasynvest.usecase.SimulationUsecase
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -30,9 +32,12 @@ class SimulationStartViewModel(val simulationUsecase: SimulationUsecase) : ViewM
 
     val simulationButtonEnabled = MutableLiveData<Boolean>()
     val showLoading = MutableLiveData<Boolean>()
+    val simulationResult = MutableLiveData<SimulationResult>()
+
     val dateValidationError = MutableLiveData<@IdRes Int>()
     val valueValidationError = MutableLiveData<@IdRes Int>()
     val percentValidationError = MutableLiveData<@IdRes Int>()
+    val simulationError = MutableLiveData<String>()
 
     fun validateFields() {
         simulationButtonEnabled.postValue(
@@ -47,7 +52,21 @@ class SimulationStartViewModel(val simulationUsecase: SimulationUsecase) : ViewM
 
         if (value != null && date != null && percent != null) {
             showLoading.postValue(true)
-            //call simulation
+
+            simulationUsecase.execute(
+                value,
+                date,
+                percent,
+                onSuccess = { result ->
+                    showLoading.postValue(false)
+                    simulationResult.postValue(result)
+                },
+                onError = { error ->
+                    showLoading.postValue(false)
+                    simulationError.postValue(error.localizedMessage)
+                    Log.e("TESTE_EASYNVEST", "ERRO: ${error.message}")
+                }
+            )
         }
     }
 
