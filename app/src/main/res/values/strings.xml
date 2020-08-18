@@ -7,4 +7,7 @@
     <string name="simulation_percent_hint">Qual o percentual do CDI do investimento? *</string>
     <string name="simulation_percent_value_hint">100%</string>
     <string name="simulation_button">Simular</string>
+    <string name="date_validation_error">Data inválida!!!</string>
+    <string name="value_validation_error">Valor inválido!!!</string>
+    <string name="percent_validation_error">Porcentagem inválida!!!</string>
 </resources>

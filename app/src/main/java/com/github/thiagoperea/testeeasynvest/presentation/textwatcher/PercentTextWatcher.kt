@@ -6,7 +6,7 @@ import android.widget.EditText
 
 class PercentTextWatcher(private val editText: EditText) : TextWatcher {
 
-    private var isDeletion: Boolean = false
+    private var isDeletion = false
 
     override fun afterTextChanged(str: Editable) {
         editText.removeTextChangedListener(this)
