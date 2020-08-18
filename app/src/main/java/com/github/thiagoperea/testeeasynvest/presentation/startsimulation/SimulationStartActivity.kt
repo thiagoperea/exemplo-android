@@ -1,6 +1,7 @@
 package com.github.thiagoperea.testeeasynvest.presentation.startsimulation
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
@@ -13,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SimulationStartActivity : AppCompatActivity() {
 
-    val viewModel: SimulationStartViewModel by viewModel()
+    private val viewModel: SimulationStartViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,13 @@ class SimulationStartActivity : AppCompatActivity() {
         viewModel.simulationButtonEnabled.observe(this, Observer {
             simulationButton.isEnabled = it
         })
+        viewModel.showLoading.observe(this, Observer {
+            if (it) {
+                showLoading()
+            } else {
+                hideLoading()
+            }
+        })
 
         viewModel.valueValidationError.observe(this, Observer {
             simulationTotalValue.error = getString(it)
@@ -39,6 +47,28 @@ class SimulationStartActivity : AppCompatActivity() {
         viewModel.percentValidationError.observe(this, Observer {
             simulationPercentValue.error = getString(it)
         })
+    }
+
+    private fun showLoading() {
+        simulationButton.isEnabled = false
+        simulationLoading.visibility = View.VISIBLE
+        simulationTotalHint.visibility = View.GONE
+        simulationTotalValue.visibility = View.GONE
+        simulationDueDateHint.visibility = View.GONE
+        simulationDueDateValue.visibility = View.GONE
+        simulationPercentHint.visibility = View.GONE
+        simulationPercentValue.visibility = View.GONE
+    }
+
+    private fun hideLoading() {
+        simulationButton.isEnabled = true
+        simulationLoading.visibility = View.GONE
+        simulationTotalHint.visibility = View.VISIBLE
+        simulationTotalValue.visibility = View.VISIBLE
+        simulationDueDateHint.visibility = View.VISIBLE
+        simulationDueDateValue.visibility = View.VISIBLE
+        simulationPercentHint.visibility = View.VISIBLE
+        simulationPercentValue.visibility = View.VISIBLE
     }
 
     private fun setupTextWatchers() {

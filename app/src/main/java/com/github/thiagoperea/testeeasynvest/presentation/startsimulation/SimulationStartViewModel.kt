@@ -4,11 +4,12 @@ import androidx.annotation.IdRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.thiagoperea.testeeasynvest.R
+import com.github.thiagoperea.testeeasynvest.usecase.SimulationUsecase
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SimulationStartViewModel : ViewModel() {
+class SimulationStartViewModel(val simulationUsecase: SimulationUsecase) : ViewModel() {
     var totalValueRaw = ""
         set(value) {
             field = value
@@ -28,6 +29,7 @@ class SimulationStartViewModel : ViewModel() {
         }
 
     val simulationButtonEnabled = MutableLiveData<Boolean>()
+    val showLoading = MutableLiveData<Boolean>()
     val dateValidationError = MutableLiveData<@IdRes Int>()
     val valueValidationError = MutableLiveData<@IdRes Int>()
     val percentValidationError = MutableLiveData<@IdRes Int>()
@@ -42,6 +44,11 @@ class SimulationStartViewModel : ViewModel() {
         val value = getFormattedValue()
         val date = getFormattedDate()
         val percent = getFormattedPercent()
+
+        if (value != null && date != null && percent != null) {
+            showLoading.postValue(true)
+            //call simulation
+        }
     }
 
     fun getFormattedPercent(): Int? {
@@ -56,7 +63,7 @@ class SimulationStartViewModel : ViewModel() {
     }
 
     fun getFormattedValue(): Double? {
-        val digitsOnly = dateRaw.filter { it.isDigit() }
+        val digitsOnly = totalValueRaw.filter { it.isDigit() }
 
         if (digitsOnly.isEmpty() || digitsOnly.toDouble() == 0.0) {
             valueValidationError.postValue(R.string.value_validation_error)
