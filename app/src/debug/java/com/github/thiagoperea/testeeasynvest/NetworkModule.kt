@@ -37,7 +37,7 @@ class MockApi : ApiService {
             yearlyInterestRate = 9.5512,
             maturityTotalDays = 1981,
             maturityBusinessDays = 1409,
-            maturityDate = maturityDate.plus("T:00:00:00"), //using same date
+            maturityDate = maturityDate.plus("T00:00:00"), //using same date
             rate = rate.toDouble(),
             isTaxFree = false
         )

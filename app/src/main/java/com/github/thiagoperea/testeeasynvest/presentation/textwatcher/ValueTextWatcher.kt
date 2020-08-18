@@ -15,10 +15,7 @@ class ValueTextWatcher(private val editText: EditText) : TextWatcher {
         if (value.isNotEmpty()) {
 
             val numberFormat = NumberFormat.getCurrencyInstance()
-                .apply {
-                    maximumFractionDigits = 5
-                    currency = Currency.getInstance(Locale("pt", "BR"))
-                }
+            numberFormat.currency = Currency.getInstance(Locale("pt", "BR"))
 
             str.clear()
             str.append(numberFormat.format(value.toDouble() / 100))
