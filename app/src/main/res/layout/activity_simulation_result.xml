@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/resultTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_title"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/resultTitleValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            android:textSize="42sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultTitle"
+            tools:text="R$ 1.088,69" />
+
+        <TextView
+            android:id="@+id/resultSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultTitleValue"
+            tools:text="Rendimento total de R$ 88,69" />
+
+        <TextView
+            android:id="@+id/resultAppliedValueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_applied_value_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultSubtitle" />
+
+        <TextView
+            android:id="@+id/resultAppliedValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultAppliedValueTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultAppliedValueTitle"
+            tools:text="R$ 1.000,00" />
+
+        <TextView
+            android:id="@+id/resultGrossValueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_gross_value_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultAppliedValueTitle" />
+
+        <TextView
+            android:id="@+id/resultGrossValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultGrossValueTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultGrossValueTitle"
+            tools:text="R$ 1.088,69" />
+
+        <TextView
+            android:id="@+id/resultProfitValueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_profit_value_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultGrossValueTitle" />
+
+        <TextView
+            android:id="@+id/resultProfitValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultProfitValueTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultProfitValueTitle"
+            tools:text="R$ 88,69" />
+
+        <TextView
+            android:id="@+id/resultTaxesValueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_taxes_value_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultProfitValueTitle" />
+
+        <TextView
+            android:id="@+id/resultTaxesValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultTaxesValueTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultTaxesValueTitle"
+            tools:text="R$ 15,52(17,50%)" />
+
+        <TextView
+            android:id="@+id/resultNetAmountValueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_net_amount_value_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultTaxesValueTitle" />
+
+        <TextView
+            android:id="@+id/resultNetAmountValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultNetAmountValueTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultNetAmountValueTitle"
+            tools:text="R$ 1.073,17" />
+
+        <TextView
+            android:id="@+id/resultMaturityDateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_maturity_date_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultNetAmountValueTitle" />
+
+        <TextView
+            android:id="@+id/resultMaturityDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultMaturityDateTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultMaturityDateTitle"
+            tools:text="27/10/2018" />
+
+        <TextView
+            android:id="@+id/resultMaturityTotalDaysTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_maturity_total_days_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultMaturityDateTitle" />
+
+        <TextView
+            android:id="@+id/resultMaturityTotalDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultMaturityTotalDaysTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultMaturityTotalDaysTitle"
+            tools:text="365" />
+
+        <TextView
+            android:id="@+id/resultMonthlyGrossRateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_monthly_gross_rate_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultMaturityTotalDaysTitle" />
+
+        <TextView
+            android:id="@+id/resultMonthlyGrossRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultMonthlyGrossRateTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultMonthlyGrossRateTitle"
+            tools:text="0,57%" />
+
+        <TextView
+            android:id="@+id/resultRatePercentTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_rate_percent_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultMonthlyGrossRate" />
+
+        <TextView
+            android:id="@+id/resultRatePercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultRatePercentTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultRatePercentTitle"
+            tools:text="123%" />
+
+        <TextView
+            android:id="@+id/resultAnnualGrossRateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_annual_gross_rate_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultRatePercentTitle" />
+
+        <TextView
+            android:id="@+id/resultAnnualGrossRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultAnnualGrossRateTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultAnnualGrossRateTitle"
+            tools:text="7,09%" />
+
+        <TextView
+            android:id="@+id/resultPeriodGrossRateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_period_gross_rate_title"
+            android:textColor="@color/black75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultAnnualGrossRateTitle" />
+
+        <TextView
+            android:id="@+id/resultPeriodGrossRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/resultPeriodGrossRateTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/resultPeriodGrossRateTitle"
+            tools:text="8,87%" />
+
+        <Button
+            android:id="@+id/resultSimulateAgainButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_button"
+            android:fontFamily="@font/raleway"
+            android:text="@string/result_simulate_again"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultPeriodGrossRateTitle"
+            app:layout_constraintVertical_bias="1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

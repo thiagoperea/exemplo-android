@@ -1,11 +1,13 @@
 package com.github.thiagoperea.testeeasynvest.presentation.startsimulation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.github.thiagoperea.testeeasynvest.R
+import com.github.thiagoperea.testeeasynvest.presentation.simulationresult.SimulationResultActivity
 import com.github.thiagoperea.testeeasynvest.presentation.textwatcher.DateTextWatcher
 import com.github.thiagoperea.testeeasynvest.presentation.textwatcher.PercentTextWatcher
 import com.github.thiagoperea.testeeasynvest.presentation.textwatcher.ValueTextWatcher
@@ -44,7 +46,9 @@ class SimulationStartActivity : AppCompatActivity() {
 
     private fun setupResponseListeners() {
         viewModel.simulationResult.observe(this, {
-            Toast.makeText(this, "Abrir tela!! RESULT: $it", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SimulationResultActivity::class.java)
+            intent.putExtra(SimulationResultActivity.RESULT_EXTRA, it)
+            startActivity(intent)
         })
         viewModel.simulationError.observe(this, {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()

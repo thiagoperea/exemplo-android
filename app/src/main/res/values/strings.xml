@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Teste Easynvest</string>
+
     <string name="simulation_total_hint">Quanto você gostaria de aplicar? *</string>
     <string name="simulation_total_value_hint">R$</string>
     <string name="simulation_duedate_hint">Qual a data de vencimento do investimento? *</string>
@@ -10,4 +11,19 @@
     <string name="date_validation_error">Data inválida!!!</string>
     <string name="value_validation_error">Valor inválido!!!</string>
     <string name="percent_validation_error">Porcentagem inválida!!!</string>
+
+    <string name="result_title">Resultado da simulação</string>
+    <string name="result_applied_value_title">Valor aplicado inicialmente</string>
+    <string name="result_gross_value_title">Valor bruto do investimento</string>
+    <string name="result_profit_value_title">Valor do rendimento</string>
+    <string name="result_taxes_value_title">IR sobre o rendimento</string>
+    <string name="result_net_amount_value_title">Valor líquido do investimento</string>
+    <string name="result_maturity_date_title">Data de resgate</string>
+    <string name="result_maturity_total_days_title">Dias corridos</string>
+    <string name="result_monthly_gross_rate_title">Rendimento mensal</string>
+    <string name="result_rate_percent_title">Percentual do CDI do investimento</string>
+    <string name="result_annual_gross_rate_title">Rentabilidade anual</string>
+    <string name="result_period_gross_rate_title">Rentabilidade no período</string>
+    <string name="result_simulate_again">Simular novamente</string>
+    <string name="result_subtitle">Rendimento total de %s</string>
 </resources>

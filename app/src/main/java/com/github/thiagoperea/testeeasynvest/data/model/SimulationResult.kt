@@ -1,5 +1,9 @@
 package com.github.thiagoperea.testeeasynvest.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class SimulationResult(
     val investmentParameter: SimulationResultParameters,
     val grossAmount: Double,
@@ -13,8 +17,9 @@ data class SimulationResult(
     val taxesRate: Double,
     val rateProfit: Double,
     val annualNetRateProfit: Double
-)
+) : Parcelable
 
+@Parcelize
 data class SimulationResultParameters(
     val investedAmount: Double,
     val yearlyInterestRate: Double,
@@ -23,4 +28,4 @@ data class SimulationResultParameters(
     val maturityDate: String,
     val rate: Double,
     val isTaxFree: Boolean
-)
+) : Parcelable
