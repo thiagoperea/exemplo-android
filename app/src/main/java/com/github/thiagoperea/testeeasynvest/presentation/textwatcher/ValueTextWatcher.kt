@@ -3,8 +3,7 @@ package com.github.thiagoperea.testeeasynvest.presentation.textwatcher
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import java.text.NumberFormat
-import java.util.*
+import com.github.thiagoperea.testeeasynvest.extensions.formatMonetary
 
 class ValueTextWatcher(private val editText: EditText) : TextWatcher {
 
@@ -12,13 +11,11 @@ class ValueTextWatcher(private val editText: EditText) : TextWatcher {
         editText.removeTextChangedListener(this)
 
         val value = str.toString().filter { it.isDigit() }
+
         if (value.isNotEmpty()) {
-
-            val numberFormat = NumberFormat.getCurrencyInstance()
-            numberFormat.currency = Currency.getInstance(Locale("pt", "BR"))
-
             str.clear()
-            str.append(numberFormat.format(value.toDouble() / 100))
+            val doubleVal = value.toDouble() / 100
+            str.append(doubleVal.formatMonetary())
         }
 
         editText.setSelection(str.length)
